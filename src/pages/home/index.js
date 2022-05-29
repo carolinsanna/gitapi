@@ -1,18 +1,24 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import * as S from './styled';
 
 function App(props) {
   function handleSearch(){
-    axios.get(`https://api.github.com/users/${user}/repos`).then(response => console.log(response.data));
+    axios.get(`https://api.github.com/users/${user}/repos`).then(response => {
+      const repos = response.data;
+      const reposName = [];
+      repos.map((repository) => {
+        reposName.push(repository.name);
+      });
+      localStorage.setItem('reposName', JSON.stringify(reposName));
+    });
   }
   const [user, setUser] = useState('');
   return (
-    <>
-      <h1>{props.title}</h1>
-      <p> Searching repos from {user}</p>
-      <input className='userInput' placeholder='User' value={user} onChange={e => setUser(e.target.value)}/>
-      <button type='button' onClick={handleSearch}>Search</button>
-    </>
+    <S.Container>
+      <S.Input className='userInput' placeholder='User' value={user} onChange={e => setUser(e.target.value)}/>
+      <S.Button type='button' onClick={handleSearch}>Search</S.Button>
+    </S.Container>
   );
 }
 

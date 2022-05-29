@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import * as S from './styled';
+import {Link} from 'react-router-dom';
 
 function Repos(){
     const [repos, setRepos] = useState([]);
@@ -23,7 +24,8 @@ function Repos(){
                     )
                     })
                 }
-            </S.List> 
+            </S.List>
+            <S.LinkHome to='/'>Back</S.LinkHome> 
         </S.Container>
     )
 }

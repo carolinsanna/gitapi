@@ -1,10 +1,13 @@
 import React from 'react';
+import * as S from './styled';
 
 function Repos(){
     return(
-        <h1>
-            Repos
-        </h1>
+        <S.Container>    
+            <S.Title>
+                Repositories
+            </S.Title> 
+        </S.Container>
     )
 }
 

@@ -7,7 +7,6 @@ export const Container = styled.div`
     max-width: 800px;    
     font-family: sans-serif;
 `
-
 export const Title = styled.h1`
     font-size: 2 rem;
     color: #333;

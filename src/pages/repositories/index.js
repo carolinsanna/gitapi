@@ -1,15 +1,20 @@
 import React, {useEffect, useState} from 'react';
 import * as S from './styled';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 function Repos(){
+    const navigate = useNavigate();
     const [repos, setRepos] = useState([]);
 
     useEffect(() => {
         let reposName = localStorage.getItem('reposName');
-        reposName = JSON.parse(reposName);
-        setRepos(reposName);
-        localStorage.clear();
+        if(reposName != null){
+            reposName = JSON.parse(reposName);
+            setRepos(reposName);
+            localStorage.clear();
+        } else {
+            navigate('/');
+        }
     }, []);
 
     return(
